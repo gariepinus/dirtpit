@@ -18,16 +18,16 @@ HELP="\n
  and exits.                                                                     \n
                                                                                 \n
  COMMANDS:                                                                      \n
-\t    tmp <string>. store string                                                \n
+\t    tmp <STRING>. store STRING                                                \n
 \t    tmp stdin.... store input from stdin instead of parameter                 \n
-\t    tmp put...... send ~/.tmp to server                                       \n
-\t    tmp get...... receive ~/.tmp from server                                  \n
+\t    tmp put...... send tmp-store to server                                    \n
+\t    tmp get...... receive tmp-store from server                               \n
 \t    tmp help..... display this message                                        \n
                                                                                 \n
  OPTIONS:                                                                       \n
 \t    -p ...... print content of tmp-store after command finished               \n
 \t    -P ...... print path to tmp-store and exit                                \n
-\t    -a ...... append to tmp store instead of overwriteting                    \n
+\t    -a ...... append to tmp store instead of overwriting                      \n
 \t    -H HOST.. use HOST for get/pull instead of default server                 \n
 \t    -v ...... verbose                                                         \n
 \t    -V ...... dispay version information and exit                             \n
