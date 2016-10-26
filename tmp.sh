@@ -49,6 +49,7 @@ SERVER="spock"
 VERBOSE=false
 APPEND=false
 STORE=""
+REMOTE=""
 
 
 ### FUNCTIONS ###
@@ -119,9 +120,8 @@ function findstore {
 }
 
 function findremote {
-    remote=$(ssh $SERVER tmp -p)
-    verbose "Remote path: '$remote'"
-    return $remote
+    REMOTE=$(ssh $SERVER tmp -p)
+    verbose "Remote path: '$REMOTE'"
 }
 
 
@@ -190,23 +190,13 @@ then
     exit 0
 elif [ ${args[0]} == "put" ]
 then
-    remotestore=findremote
-    if $VERBOSE
-    then
-	scp -v $STORE $SERVER:$remotestore
-    else
-	scp $STORE $SERVER:$remotestore 2>&1
-    fi
+    findremote
+    scp $STORE $SERVER:$REMOTE
     exit 0
 elif [ ${args[0]} == "get" ]
 then
-    remotestore=findremote
-    if $VERBOSE
-    then
-	scp -v $SERVER:$remotestore $STORE
-    else
-	scp $SERVER:$remotestore $STORE 2>&1
-    fi
+    findremote
+    scp $SERVER:$REMOTE $STORE
     exit 0
 elif [ ${args[0]} == "stdin" ]
 then
