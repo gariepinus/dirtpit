@@ -11,26 +11,33 @@ HELP="\n
 ################################################################################\n
                                                                                 \n
  USAGE:                                                                         \n
-    tmp [options] [command|string]                                              \n
+\t    tmp [options] [command|string]                                            \n
                                                                                 \n
  tmp takes one parameter which can be either a string you want to store         \n
  or a command. Without this parameter tmp prints the content of your tmp-store  \n
  and exits.                                                                     \n
                                                                                 \n
  COMMANDS:                                                                      \n
-    tmp <string>. store string                                                  \n
-    tmp stdin.... store input from stdin instead of parameter                   \n
-    tmp put...... send ~/.tmp to server                                         \n
-    tmp get...... receive ~/.tmp from server                                    \n
-    tmp help..... display this message                                          \n
+\t    tmp <string>. store string                                                \n
+\t    tmp stdin.... store input from stdin instead of parameter                 \n
+\t    tmp put...... send ~/.tmp to server                                       \n
+\t    tmp get...... receive ~/.tmp from server                                  \n
+\t    tmp help..... display this message                                        \n
                                                                                 \n
  OPTIONS:                                                                       \n
-    - p ...... print path to tmp-store and exit                                 \n
-    - a ...... append to tmp store instead of overwriteting                     \n
-    - H HOST.. use HOST for get/pull instead of default server                  \n
-    - v ...... verbose                                                          \n
-    - V ...... dispay version information and exit                              \n
-    - h ...... display help message and exit                                    \n
+\t    -p ...... print content of tmp-store after command finished               \n
+\t    -P ...... print path to tmp-store and exit                                \n
+\t    -a ...... append to tmp store instead of overwriteting                    \n
+\t    -H HOST.. use HOST for get/pull instead of default server                 \n
+\t    -v ...... verbose                                                         \n
+\t    -V ...... dispay version information and exit                             \n
+\t    -h ...... display help message and exit                                   \n
+                                                                                \n
+ CLIPBOARD OPTIONS:                                                             \n
+\t    -c ...... copy content of tmp-store to clipboard and exit                 \n
+\t    -C ...... copy content of clipboard to tmp-store and exit                 \n
+                                                                                \n
+ xclip must be installed or these options will fail!                            \n
                                                                                 \n
                                                                                 \n
   LICENSE:                                                                      \n
@@ -50,6 +57,9 @@ VERBOSE=false
 APPEND=false
 STORE=""
 REMOTE=""
+TMPTOCLIP=false
+CLIPTOTMP=false
+PRINTCONT=false
 
 
 ### FUNCTIONS ###
@@ -120,15 +130,32 @@ function findstore {
 }
 
 function findremote {
-    REMOTE=$(ssh $SERVER tmp -p)
+    REMOTE=$(ssh $SERVER tmp -P)
     verbose "Remote path: '$REMOTE'"
+}
+
+function fin {
+    if $PRINTCONT
+    then
+	tmp
+    fi
+    exit 0
 }
 
 
 ### OPTIONS ###
-while getopts ":paHvVh" option ; do
+while getopts ":cCpPaHvVh" option ; do
     case $option in
+	c)
+	    TMPTOCLIP=true
+	    ;;
+	C)
+	    CLIPTOTMP=true
+	    ;;
 	p)
+	    PRINTCONT=true
+	    ;;
+	P)
 	    findstore
 	    echo $STORE
 	    exit 0
@@ -168,7 +195,27 @@ done
 shift $((OPTIND-1))
 args=($@)
 findstore
-	
+
+# Clipboard operations
+if $CLIPTOTMP
+then
+    if $APPEND
+    then
+	xclip -o | tmp -a stdin
+	echo "Appended clipboad content to tmp-store"
+    else
+	xclip -o | tmp stdin
+	echo "Wrote clipboad content to tmp-store"
+    fi
+    fin
+fi
+if $TMPTOCLIP
+then
+    echo -n "$(tmp)" | xclip -i
+    echo "Copied tmp-store to clipboard"
+    fin
+fi
+
 # If no param was given, print content of tmp-store and exit
 if [ ${#args[@]} -eq 0 ]
 then
@@ -192,12 +239,12 @@ elif [ ${args[0]} == "put" ]
 then
     findremote
     scp $STORE $SERVER:$REMOTE
-    exit 0
+    fin
 elif [ ${args[0]} == "get" ]
 then
     findremote
     scp $SERVER:$REMOTE $STORE
-    exit 0
+    fin
 elif [ ${args[0]} == "stdin" ]
 then
     read input
@@ -207,7 +254,7 @@ then
     else
 	echo $input > $STORE
     fi
-    exit 0
+    fin
 else
     # If no command present, treat param as string to store
     if $APPEND
@@ -216,5 +263,5 @@ else
     else
 	echo ${args[0]} > $STORE
     fi
-    exit 0
+    fin
 fi
