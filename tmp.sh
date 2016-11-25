@@ -144,7 +144,7 @@ function fin {
 
 
 ### OPTIONS ###
-while getopts ":cCpPaHvVh" option ; do
+while getopts ":cCpPaH:vVh" option ; do
     case $option in
 	c)
 	    TMPTOCLIP=true
