@@ -9,6 +9,7 @@ VERSION=0.1
 ################################################################################
 HELP="                                                                          \n
 runcmd v$VERSION                                                                \n
+                                                                                \n
   USAGE:                                                                        \n
 \t    runcmd [options] <command> <message>                                      \n
                                                                                 \n
