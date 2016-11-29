@@ -1,13 +1,12 @@
 #!/bin/bash
 VERSION=0.1
 
-
-############################################################
+################################################################################
 # serialupdate
 #  [modify zonefile serials]
 #
 # by gariepinus <mail@gariepinus.de>
-############################################################
+################################################################################
 HELP="                                                      \n
 serialupdate v$VERSION                                      \n
                                                             \n
@@ -34,13 +33,14 @@ unchanged.                                                  \n
 \t   .... serials were changed.                             \n
 \t   2 :: No serial was found.                              \n
 \t   3 :: Execution aborted or unexpected results.          \n"
-############################################################
-# ----------------------------------------------------------------------------
-# 'THE BEER-WARE LICENSE' (Revision 42):
-# <mail@gariepinus.de> wrote this file. As long as you retain this notice you
-# can do whatever you want with this stuff. If we meet some day, and you think
-# this stuff is worth it, you can buy me a beer in return.
-# ----------------------------------------------------------------------------
+################################################################################
+# LICENSE:
+# > ----------------------------------------------------------------------------
+# > 'THE BEER-WARE LICENSE' (Revision 42):
+# > <mail@gariepinus.de> wrote this file. As long as you retain this notice you
+# > can do whatever you want with this stuff. If we meet some day, and you think
+# > this stuff is worth it, you can buy me a beer in return.
+# > ----------------------------------------------------------------------------
 
 
 ### DEFAULTS ###
