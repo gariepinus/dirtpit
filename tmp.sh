@@ -1,14 +1,14 @@
 #! /bin/bash
 VERSION=0.2
 
-
-HELP="\n
-################################################################################\n
-# tmp v$VERSION                                                                 \n
-#  [quick and dirty string exchange]                                            \n
-#                                                                               \n
-# by gariepinus <mail@gariepinus.de>                                            \n
-################################################################################\n
+################################################################################
+# tmp v$VERSION                                                                 
+#  [quick and dirty string exchange]                                            
+#                                                                               
+# by gariepinus <mail@gariepinus.de>                                            
+################################################################################
+HELP="                                                                          \n
+tmp v$VERSION                                                                   \n
                                                                                 \n
  USAGE:                                                                         \n
 \t    tmp [options] [command|string]                                            \n
@@ -38,18 +38,16 @@ HELP="\n
 \t    -C ...... copy content of clipboard to tmp-store and exit                 \n
                                                                                 \n
  xclip must be installed or these options will fail!                            \n
-                                                                                \n
-                                                                                \n
-  LICENSE:                                                                      \n
->>                                                                              \n
- > ---------------------------------------------------------------------------- \n
- > 'THE BEER-WARE LICENSE' (Revision 42):                                       \n
- > <mail@gariepinus.de> wrote this file. As long as you retain this notice you  \n
- > can do whatever you want with this stuff. If we meet some day, and you think \n
- > this stuff is worth it, you can buy me a beer in return.                     \n
- > ---------------------------------------------------------------------------- \n
- <<                                                                             \n
                                                                                 \n"
+################################################################################
+# > ----------------------------------------------------------------------------
+# > 'THE BEER-WARE LICENSE' (Revision 42):                                      
+# > <mail@gariepinus.de> wrote this file. As long as you retain this notice you 
+# > can do whatever you want with this stuff. If we meet some day, and you think
+# > this stuff is worth it, you can buy me a beer in return.                    
+# > ----------------------------------------------------------------------------
+# <<                                                                            
+
 
 ### DEFAULTS ###
 SERVER="spock"
