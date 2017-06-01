@@ -33,20 +33,21 @@ tmp v$VERSION                                                                   
 \t    -V ...... dispay version information and exit                             \n
 \t    -h ...... display help message and exit                                   \n
                                                                                 \n
- CLIPBOARD OPTIONS:                                                             \n
+ CLIPBOARD OPTIONS*:                                                            \n
 \t    -c ...... copy content of tmp-store to clipboard and exit                 \n
 \t    -C ...... copy content of clipboard to tmp-store and exit                 \n
                                                                                 \n
- xclip must be installed or these options will fail!                            \n
+ *) xclip must be installed or these options will fail!                         \n
                                                                                 \n"
 ################################################################################
+# LICENSE:
 # > ----------------------------------------------------------------------------
 # > 'THE BEER-WARE LICENSE' (Revision 42):                                      
 # > <mail@gariepinus.de> wrote this file. As long as you retain this notice you 
 # > can do whatever you want with this stuff. If we meet some day, and you think
 # > this stuff is worth it, you can buy me a beer in return.                    
 # > ----------------------------------------------------------------------------
-# <<                                                                            
+
 
 
 ### DEFAULTS ###
