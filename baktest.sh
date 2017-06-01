@@ -1,13 +1,13 @@
 #!/bin/bash
 VERSION="0.1"
 
-HELP="\n
-################################################################################\n
-# baktest $VERSION                                                              \n
-#  [create and modify a file to see if you can restore it]                      \n
-#                                                                               \n
-# by gariepinus <mail@gariepinus.de>                                            \n
-################################################################################\n
+################################################################################
+# baktest $VERSION
+#  [create a file and modify it serveral times to test your backup]
+#
+# by gariepinus <mail@gariepinus.de>
+################################################################################
+HELP="                                                                          \n
                                                                                 \n
   USAGE:                                                                        \n
 \t    baktest [options] [path]                                                  \n
@@ -29,16 +29,16 @@ in the current directory and modifies it three times with intervals of          
 \t    ........... the script exits (gets ignored when -d is used)               \n
 \t    -h......... display this help and exit                                    \n
 \t    -V......... output version information and exit                           \n
-                                                                                \n
-                                                                                \n
-  LICENSE:                                                                      \n
- > ---------------------------------------------------------------------------- \n
- > 'THE BEER-WARE LICENSE' (Revision 42):                                       \n
- > <mail@gariepinus.de> wrote this file. As long as you retain this notice you  \n
- > can do whatever you want with this stuff. If we meet some day, and you think \n
- > this stuff is worth it, you can buy me a beer in return.                     \n
- > ---------------------------------------------------------------------------- \n
                                                                                 \n"
+################################################################################
+# LICENSE:
+# > ----------------------------------------------------------------------------
+# > 'THE BEER-WARE LICENSE' (Revision 42):
+# > <mail@gariepinus.de> wrote this file. As long as you retain this notice you
+# > can do whatever you want with this stuff. If we meet some day, and you think
+# > this stuff is worth it, you can buy me a beer in return.
+# > ----------------------------------------------------------------------------
+
 
 
 ### Default values ###
